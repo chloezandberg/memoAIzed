@@ -1,21 +1,3 @@
-import streamlit as st
-import numpy as np
-import pandas as pd
-import time
-
-"""
-## Your eco-friendly image generator: [INSERT NAME HERE]
-#### A memoized stable diffusion image generator
-"""
-
-@st.cache_data
-def text_entry(entry1) :
-    return '...'
-
-# Image Background Replacement on Amazon Bedrock using outpainting
-# Author: Gary A. Stafford
-# Date: 2024-08-21
-
 import base64
 import datetime
 import io
