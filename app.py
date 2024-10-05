@@ -41,8 +41,13 @@ logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
 
+# ----------------------------------------------------------------------------
+# FIELDS & CONSTANTS:
 # Amazon Bedrock model ID
 MODEL_ID = "amazon.titan-image-generator-v2:0"
+# Cached prompts that have already been asked
+cached_prompts = ""
+
 
 
 def generate_image(body):
@@ -287,3 +292,40 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+__TableName__ = "promptCache"
+boto3.client('dynamodb')
+
+
+def checkOrGenerate(prompt):    
+    # Contact llm with this prompt
+    existingPrompt = findExistingPrompt(prompt)
+    if (existingPrompt != "None"):
+        return # TODO: get imagine from database using existingPrompt key
+    else:
+        new_image = generate_image(prompt)
+        # TODO: Add prompt and image to database
+        return new_image
+    
+
+def findExistingPrompt(prompt):
+    # cached_prompts_array = get keys from db
+
+    # turn cached prompt array file into one string separated by '|'
+    for existingPrompt in (cached_prompts_array):
+        cached_prompts = cached_prompts + " | " + existingPrompt
+    # Adding one final "| and adding the rest of the prompt for LLM"
+    cached_prompts = cached_prompts + " | Is there anything in this list of prompts (separated by the character '|') that is sufficiently and semantically the same to the prompt '" + prompt + "'? If there is, return it exactly without saying anything else. If not, return 'None'."
+
+    try:
+        return (contactLLM(cached_prompts))
+    except:
+        return "None"
+    
+def contactLLM(prompt):
+    #TODO send prompt to LLM and get respose back
+    #Parse response to get necessary shit
+    return #TODO prompt
+
+
+    
