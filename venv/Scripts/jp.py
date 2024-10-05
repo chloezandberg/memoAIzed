@@ -1,4 +1,4 @@
-#!C:\Users\andre\Downloads\memoizedstablediff\venv\Scripts\python.exe
+#!C:\Users\andre\Downloads\cic-image-generator\memoizedstablediff\venv\Scripts\python.exe
 
 import sys
 import json

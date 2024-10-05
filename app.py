@@ -1,7 +1,7 @@
 import streamlit as st
 import boto3
 import json
-import base64
+from botocore.exceptions import ClientError
 
 def generate_image(prompt):
     # Define the request payload
