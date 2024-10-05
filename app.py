@@ -324,5 +324,84 @@ if st.button("Generate Image"):
 #             st.error("Please upload an image file.")
 
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()
+
+__TableName__ = "promptCache"
+boto3.client('dynamodb')
+dynamoClient = boto3.client(service_name="dynamodb", region_name="us-west-2")
+db = boto3.resource('dynamodb')
+promptTable = db.Table(__TableName__)
+
+def checkOrGenerate(prompt):    
+    # Contact llm with this prompt
+    # TODO existingPrompt = findExistingPrompt(prompt)
+    if (False): #existingPrompt != "None"):
+        return # TODO: get imagine from database using existingPrompt key
+    else:
+        # new_image = generate_image(prompt)
+        # TODO: Add prompt and image to database
+        test = promptTable.get_item(
+            Key={
+                'prompt': 'man with black hair smiling wearing suit and tie with beard and sunglasses'
+            }
+        )
+        
+        print(test["Item"])
+        new_image_data = 0
+        # TODO new_image = base64.b64decode(new_image_data)
+        return new_image_data
+    
+
+def findExistingPrompt(prompt):
+    cached_prompts_array = [] #get keys from db
+
+    # turn cached prompt array file into one string separated by '|'
+    for existingPrompt in (cached_prompts_array):
+        cached_prompts = cached_prompts + " | " + existingPrompt
+    # Adding one final "| and adding the rest of the prompt for LLM"
+    cached_prompts = cached_prompts + " | Is there anything in this list of prompts (separated by the character '|') that is sufficiently and semantically the same to the prompt '" + prompt + "'? If there is, return it exactly without saying anything else. If not, return 'None'."
+
+    try:
+        return (contactLLM(cached_prompts))
+    except:
+        return "None"
+    
+def contactLLM(prompt):
+    #TODO send prompt to LLM and get respose back
+    #Parse response to get necessary shit
+    return #TODO prompt
+
+
+# def checkOrGenerate(prompt):    
+#     # Contact llm with this prompt
+#     existingPrompt = findExistingPrompt(prompt)
+#     if (existingPrompt != "None"):
+#         return # TODO: get imagine from database using existingPrompt key
+#     else:
+#         new_image = generate_image(prompt)
+#         # TODO: Add prompt and image to database
+#         return new_image
+    
+
+# def findExistingPrompt(prompt):
+#     # cached_prompts_array = get keys from db
+
+#     # turn cached prompt array file into one string separated by '|'
+#     for existingPrompt in (cached_prompts_array):
+#         cached_prompts = cached_prompts + " | " + existingPrompt
+#     # Adding one final "| and adding the rest of the prompt for LLM"
+#     cached_prompts = cached_prompts + " | Is there anything in this list of prompts (separated by the character '|') that is sufficiently and semantically the same to the prompt '" + prompt + "'? If there is, return it exactly without saying anything else. If not, return 'None'."
+
+#     try:
+#         return (contactLLM(cached_prompts))
+#     except:
+#         return "None"
+    
+# def contactLLM(prompt):
+#     #TODO send prompt to LLM and get respose back
+#     #Parse response to get necessary shit
+#     return #TODO prompt
+
+
+    
