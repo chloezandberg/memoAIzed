@@ -2,9 +2,15 @@ import streamlit as st
 import boto3
 import json
 from botocore.exceptions import ClientError
-
+import base64
 # Initialize the Bedrock client
 client = boto3.client(service_name='bedrock-runtime')
+
+__TableName__ = "promptCache"
+boto3.client('dynamodb')
+dynamoClient = boto3.client(service_name="dynamodb", region_name="us-west-2")
+db = boto3.resource('dynamodb')
+promptTable = db.Table(__TableName__)
 
 def generate_image(prompt):
     # Define the request payload
@@ -89,16 +95,6 @@ try:
 except (ClientError, Exception) as e:
     print(f"ERROR: Can't invoke '{llama_model_id}'. Reason: {e}")
     exit(1)
-
-
-if __name__ == "__main__":
-    main()
-
-__TableName__ = "promptCache"
-boto3.client('dynamodb')
-dynamoClient = boto3.client(service_name="dynamodb", region_name="us-west-2")
-db = boto3.resource('dynamodb')
-promptTable = db.Table(__TableName__)
 
 def checkOrGenerate(prompt):    
     # Contact llm with this prompt
