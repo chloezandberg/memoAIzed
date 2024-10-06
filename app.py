@@ -115,7 +115,7 @@ def findExistingPrompt(prompt):
     for existingPrompt in cached_prompts_array:
         cached_prompts = cached_prompts + " | " + existingPrompt
     # Adding one final "| and adding the rest of the prompt for LLM"
-    cached_prompts = cached_prompts + " | Is there anything in this list of prompts (separated by the character '|') that is sufficiently and semantically the same to the prompt '" + prompt + "'? If there is, return it exactly without saying anything else. If not, return 'None'."
+    cached_prompts = cached_prompts + " | Is there anything in this list of prompts (separated by the character '|') that is sufficiently and semantically the same to the prompt '" + prompt + "'? If there is, return it exactly without saying anything else. If not, if there's even a bit of a difference, return 'None'."
 
     return contactLLM(cached_prompts)  
     
@@ -165,55 +165,85 @@ def contactLLM(prompt):
 
     return out
 
+#---------------------------------------------------------------------
+# STREAMLIT APP
+col1, col2, col3 = st.columns([1, 9, 1])
 
-# Streamlit app
-st.title("memoAIzed")
-prompt = st.text_input("Enter your text prompt:")
+REMOVE_PADDING_FROM_SIDES="""
+<style>
+    .block-container {
+        padding-top: 3rem;
+        padding-bottom: 0rem;
+    }   
+</style>
+"""
 
-if st.button("Generate Image"):
-    with st.spinner("Generating image..."):
-        start_time = time.time()
-        image_key = getOrGenerate(prompt)
-        print(image_key)
-        image_response = s3_client.get_object(Bucket=bucket_name, Key=image_key)
-        image_base64 = image_response['Body'].read()
-        # image = base64.b64decode(image_base64)
-        st.image(image_base64, caption="Generated Image")
-        end_time = time.time()
-        elapsed_time = end_time - start_time
-        st.write(f"Time taken to generate the image: {elapsed_time:.2f} seconds")
+st.markdown(REMOVE_PADDING_FROM_SIDES, unsafe_allow_html=True)
 
+hide_img_fs = '''
+<style>
+button[title="View fullscreen"]{
+    visibility: hidden;}
+</style>
+'''
+picture_rounded = """
+    <style>
+        .container1 {
+            border-radius: 8px;
+        }
+        .container2 {
+            /* Add styles for Container 2 if needed */
+        }
+    </style>
+"""
+st.markdown(hide_img_fs, unsafe_allow_html=True)
+st.markdown(hide_img_fs, unsafe_allow_html=True)
 
-# def checkOrGenerate(prompt):    
-#     # Contact llm with this prompt
-#     existingPrompt = findExistingPrompt(prompt)
-#     if (existingPrompt != "None"):
-#         return # TODO: get imagine from database using existingPrompt key
-#     else:
-#         new_image = generate_image(prompt)
-#         # TODO: Add prompt and image to database
-#         return new_image
-    
-
-# def findExistingPrompt(prompt):
-#     # cached_prompts_array = get keys from db
-
-#     # turn cached prompt array file into one string separated by '|'
-#     for existingPrompt in (cached_prompts_array):
-#         cached_prompts = cached_prompts + " | " + existingPrompt
-#     # Adding one final "| and adding the rest of the prompt for LLM"
-#     cached_prompts = cached_prompts + " | Is there anything in this list of prompts (separated by the character '|') that is sufficiently and semantically the same to the prompt '" + prompt + "'? If there is, return it exactly without saying anything else. If not, return 'None'."
-
-#     try:
-#         return (contactLLM(cached_prompts))
-#     except:
-#         return "None"
-    
-# def contactLLM(prompt):
-#     #TODO send prompt to LLM and get respose back
-#     #Parse response to get necessary stuff
-#     return #TODO prompt
-
-
+with col2:  
+    st.image("./media/logo.svg", width=557)
 
     
+    
+
+
+
+
+with col2:
+    with st.container():
+        col2_1, col2_2 = st.columns([3, 1])
+        with col2_1:
+            prompt = st.text_input(label="",placeholder="Enter your text prompt")
+
+        with col2_2:
+            st.markdown("<div style='margin-top: 27px;'></div>", unsafe_allow_html=True)
+            gen_button_clicked = st.button("Generate Image")
+    
+
+
+if (gen_button_clicked & (prompt != "")):
+            with col2:
+                # Centering
+                st.markdown("""
+                <style>
+                div {
+                    text-align:center;
+                    align-items: center;
+                    justify-content: center;
+                }
+                </style>""", unsafe_allow_html=True)
+
+                with st.spinner("Generating image..."):
+                    start_time = time.time()
+                    image_key = getOrGenerate(prompt)
+                    print(image_key)
+                    image_response = s3_client.get_object(Bucket=bucket_name, Key=image_key)
+                    image_base64 = image_response['Body'].read()
+                     # Convert image to base64 to embed in HTML
+                    image_data = base64.b64encode(image_base64).decode('utf-8')
+                    image_html = f'<img src="data:image/png;base64,{image_data}" style="border-radius: 10px; width: 557px;"/>'
+
+                    # Use markdown to render the image with rounded corners
+                    st.markdown(image_html, unsafe_allow_html=True)
+                    end_time = time.time()
+                    elapsed_time = end_time - start_time
+                    st.write(f"This image took {elapsed_time:.2f} seconds to generate!")

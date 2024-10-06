@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\andre\Downloads\cic-image-generator\memoizedstablediff\venv"
+VIRTUAL_ENV="C:\Users\User\Desktop\memoAIzed\memoizedstablediff\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
