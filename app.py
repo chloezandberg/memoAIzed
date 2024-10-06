@@ -5,6 +5,7 @@ import json
 from botocore.exceptions import ClientError
 import base64
 from PIL import Image
+import time
 # Initialize the Bedrock client
 client = boto3.client(service_name='bedrock-runtime')
 
@@ -88,7 +89,6 @@ def getOrGenerate(prompt):
                 'prompt': existingPrompt
             }
         )
-        print(entry["Item"])
         image_key = entry["Item"]["image_url"]
         return image_key
     else:
@@ -167,17 +167,21 @@ def contactLLM(prompt):
 
 
 # Streamlit app
-st.title("Amazon Titan Image Generator")
+st.title("memoAIzed")
 prompt = st.text_input("Enter your text prompt:")
 
 if st.button("Generate Image"):
     with st.spinner("Generating image..."):
+        start_time = time.time()
         image_key = getOrGenerate(prompt)
         print(image_key)
         image_response = s3_client.get_object(Bucket=bucket_name, Key=image_key)
         image_base64 = image_response['Body'].read()
         # image = base64.b64decode(image_base64)
         st.image(image_base64, caption="Generated Image")
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+        st.write(f"Time taken to generate the image: {elapsed_time:.2f} seconds")
 
 
 # def checkOrGenerate(prompt):    
