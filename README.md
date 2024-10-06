@@ -7,6 +7,12 @@ In the demo below, the first prompt is entered for the first time, and the appli
 
 https://github.com/user-attachments/assets/1eb59e34-16fa-4b5c-bd42-40872d349041
 
+*Bonus light mode demo:*
+
+https://github.com/user-attachments/assets/8fe73bca-53f4-49f2-857d-70e704487db5
+
+
+
 Note the following:
 - The LLM will return the same image for two prompts that are worded differently, but mean the same thing (ie. "man riding a tiger with a cowboy hat" being recognized to be semantically identical to "person wearing a western hat riding a large striped cat"), optimizing sustainability while maintaining performance and user experience.
 - The retrieval time for the memoized prompt is more than 12.5 times faster than for the non-memoized prompt (11.43 seconds vs. 0.91 seconds in the demo).
