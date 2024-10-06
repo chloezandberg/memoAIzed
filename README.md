@@ -5,13 +5,11 @@ A way to recycle AI images for the sake of sustainability! [Take a look at our p
 ## Demo
 In the demo below, the first prompt is entered for the first time, and the application generates an image using generative AI. The second prompt entered is similar enough to the first, so the app outputs the memoized solution (the previously generated image from the other similar prompt).
 
-https://github.com/user-attachments/assets/1eb59e34-16fa-4b5c-bd42-40872d349041
+https://github.com/user-attachments/assets/70b5cd3f-0a91-4822-ac74-9df0af59939d
 
 *Bonus light mode demo:*
 
-https://github.com/user-attachments/assets/8fe73bca-53f4-49f2-857d-70e704487db5
-
-
+https://github.com/user-attachments/assets/62cb49e8-856c-4380-aebb-d54a6985f5d2
 
 Note the following:
 - The LLM will return the same image for two prompts that are worded differently, but mean the same thing (ie. "man riding a tiger with a cowboy hat" being recognized to be semantically identical to "person wearing a western hat riding a large striped cat"), optimizing sustainability while maintaining performance and user experience.
