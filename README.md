@@ -8,8 +8,8 @@ https://github.com/user-attachments/assets/907eb965-02f7-4ef3-ad8a-d005847d69f4
 
 
 Note the following:
-- The LLM will return the same image for two prompts that are worded differently, but mean the same thing (ie. computer and desktop), optimizing sustainability while maintaining performance.
-- The retrieval time for the memoized prompt is more than 5 times faster than for the non-memoized prompt (3 seconds vs. 16 seconds in the demo).
+- The LLM will return the same image for two prompts that are worded differently, but mean the same thing (ie. "man riding a tiger with a cowboy hat" being recognized to be semantically identical to "person wearing a western hat riding a large striped cat"), optimizing sustainability while maintaining performance and user experience.
+- The retrieval time for the memoized prompt is more than 12.5 times faster than for the non-memoized prompt (11.43 seconds vs. 0.91 seconds in the demo).
 ## Background
 AI image generation is a highly energy-demanding process. Generating just 1 AI image using Stable Diffusion can cost up to 290 watt-hours of energy ([source](https://mcengkuru.medium.com/the-hidden-cost-of-ai-images-how-generating-one-could-power-your-fridge-for-hours-174c95c43db8)), roughly the energy required to fully charge a smartphone 6 times ([source](https://www.energysage.com/electricity/house-watts/how-many-watts-does-a-phone-charger-use/)). In addition, image-generation models have taken the world by storm over the last year, with over 30 million AI-generated images created per day ([source](https://techreport.com/statistics/software-web/ai-image-generator-market-statistics/#:~:text=As%20of%20August%202023%2C%20people,better%20than%20human%2Dcreated%20art.)). This led us to ask the question - how many of these images were unique? For example, surely more than one person generates an image of a cute dog, or a flying pig, every day... Do we really have to generate a new image for each duplicate prompt? 
 
