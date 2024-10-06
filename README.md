@@ -3,9 +3,10 @@ We invented recycling but for AI-generated images.
 
 ## Demo
 In the demo below, the prompt "computer" is entered for the first time, and the application generates an image using generative AI. The second prompt, "desktop", is similar enough to "computer", so the app outputs the memoized solution. \
-\
-![memoaized-demo_6lKDFVUZ-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/178b00d9-4ce3-4369-bc66-76ed6d0608cd) \
-\
+
+https://github.com/user-attachments/assets/907eb965-02f7-4ef3-ad8a-d005847d69f4
+
+
 Note the following:
 - The LLM will return the same image for two prompts that are worded differently, but mean the same thing (ie. computer and desktop), optimizing sustainability while maintaining performance.
 - The retrieval time for the memoized prompt is more than 5 times faster than for the non-memoized prompt (3 seconds vs. 16 seconds in the demo).
