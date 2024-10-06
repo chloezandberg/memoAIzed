@@ -12,6 +12,7 @@ https://github.com/user-attachments/assets/70b5cd3f-0a91-4822-ac74-9df0af59939d
 https://github.com/user-attachments/assets/62cb49e8-856c-4380-aebb-d54a6985f5d2
 
 Note the following:
+- Both of these videos were sped up for the sake of the viewer.
 - The LLM will return the same image for two prompts that are worded differently, but mean the same thing (ie. "man riding a tiger with a cowboy hat" being recognized to be semantically identical to "person wearing a western hat riding a large striped cat"), optimizing sustainability while maintaining performance and user experience.
 - The retrieval time for the memoized prompt is more than 12.5 times faster than for the non-memoized prompt (11.43 seconds vs. 0.91 seconds in the demo).
 ## Background
