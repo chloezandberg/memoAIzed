@@ -2,7 +2,7 @@
 We invented recycling but for AI-generated images. 
 
 ## Demo
-In the demo below, the prompt "computer" is entered for the first time, and the application generates an image using generative AI. The second prompt, "desktop", is similar enough to "computer", so the app outputs the memoized solution. \
+In the demo below, the first prompt is entered for the first time, and the application generates an image using generative AI. The second prompt entered is similar enough to the first, so the app outputs the memoized solution (the previously generated image from the other similar prompt). \
 
 https://github.com/user-attachments/assets/907eb965-02f7-4ef3-ad8a-d005847d69f4
 
