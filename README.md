@@ -1,5 +1,6 @@
 # memoAIzed
-A way to recycle AI images for the sake of sustainability!
+A way to recycle AI images for the sake of sustainability! [Take a look at our presentation here.](https://github.com/user-attachments/files/17269129/memoAIzed.pdf)
+
 
 ## Demo
 In the demo below, the first prompt is entered for the first time, and the application generates an image using generative AI. The second prompt entered is similar enough to the first, so the app outputs the memoized solution (the previously generated image from the other similar prompt).
