@@ -60,7 +60,6 @@ def generate_image(prompt):
 def upload_image_to_s3(image_bytes, prompt):
     s3_key = f'images/{prompt}.png'  # Unique S3 key for each prompt
     s3_client.put_object(Bucket=bucket_name, Key=s3_key, Body=image_bytes, ContentType='image/png')
-    # return f'https://{bucket_name}.s3.amazonaws.com/{s3_key}'
     return s3_key
 
 def generate_image_and_store(prompt):
@@ -93,13 +92,6 @@ def getOrGenerate(prompt):
         return image_key
     else:
         new_image_key = generate_image_and_store(prompt)
-        # promptTable.put_item(
-        #     Item={
-        #         'prompt': prompt,
-        #         'image': new_image
-        #     }
-        # )
-        
         return new_image_key
     
 def extractPrompts(item):
@@ -201,12 +193,6 @@ st.markdown(hide_img_fs, unsafe_allow_html=True)
 
 with col2:  
     st.image("./media/logo.svg", width=557)
-
-    
-    
-
-
-
 
 with col2:
     with st.container():
