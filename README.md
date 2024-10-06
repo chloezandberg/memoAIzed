@@ -4,8 +4,7 @@ We invented recycling but for AI-generated images.
 ## Demo
 In the demo below, the first prompt is entered for the first time, and the application generates an image using generative AI. The second prompt entered is similar enough to the first, so the app outputs the memoized solution (the previously generated image from the other similar prompt). \
 
-https://github.com/user-attachments/assets/907eb965-02f7-4ef3-ad8a-d005847d69f4
-
+https://github.com/user-attachments/assets/1eb59e34-16fa-4b5c-bd42-40872d349041
 
 Note the following:
 - The LLM will return the same image for two prompts that are worded differently, but mean the same thing (ie. "man riding a tiger with a cowboy hat" being recognized to be semantically identical to "person wearing a western hat riding a large striped cat"), optimizing sustainability while maintaining performance and user experience.
