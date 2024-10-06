@@ -27,9 +27,9 @@ memoAIzed is an image generator that uses memoization (as the name implies) to r
 
 ## Tech Stack
 We used Amazon Titan Image Generator G1 v2 for image generation, Llama 3.1 70B Instruct as the LLM, Amazon DyanoDB to map memoized prompts to images, and AWS S3 to store the image files. We then threw it all together using Streamlit for lightning-fast UI development (it was only a 9-hour hackathon)!
-![image](https://github.com/user-attachments/assets/a7f40366-2a18-4015-ab48-068fd5483919)
 
 
+![Architecture Diagram](https://github.com/user-attachments/assets/2d4b9364-d48f-4af7-b8ac-b3f0c54b403c)
 
 ## Next Steps
 - It'd be even more energy-efficient to use a semantic search algorithm to compare new prompts with previous prompts, instead of asking an LLM to do it for us.
