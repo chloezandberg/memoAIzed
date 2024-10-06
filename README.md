@@ -24,13 +24,13 @@ memoAIzed is an image generator that uses memoization (as the name implies) to r
 *Fun fact: memoAIzed was inspired by how memoization is used in Dynamic Programming problems to drastically improve efficiency. We wanted to apply the same principles to improve the efficiency of GenAI, and so this project was born!*
 
 ## Tech Stack
-We used Amazon Titan Image Generator G1 v2 for image generation, Llama 3.1 70B Instruct as the LLM, Amazon DyanoDB to map memoized prompts to images, and AWS S3 to store the image files. We then threw it all together using Streamlit for lightning-fast UI development (it was only a 9-hour hackathon)!
+We used Amazon Titan Image Generator G1 v2 for image generation, Llama 3.1 70B Instruct as the LLM, Amazon DynamoDB to map memoized prompts to images, and AWS S3 to store the image files. We then threw it all together using Streamlit for lightning-fast UI development (this was especially helpful, as this project was made for a hackathon that only lasted 9-hours)!
 
 
 ![Architecture Diagram](https://github.com/user-attachments/assets/2d4b9364-d48f-4af7-b8ac-b3f0c54b403c)
 
 ## Next Steps
-- It'd be even more energy-efficient to use a semantic search algorithm to compare new prompts with previous prompts, instead of asking an LLM to do it for us.
+- It'd be even more energy-efficient to use a semantic search algorithm using a tool like Amazon OpenSearch to compare new prompts with previous prompts, instead of asking an LLM to do it for us.
 - A toggle that allows the user to choose between our memoized image generator and a regular image generator would be nice since it would give users more flexibility with how accurate they want their results.
 - A slider feature that allows users to balance sustainability with accuracy would give users even more flexibility.
 
