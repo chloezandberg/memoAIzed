@@ -21,9 +21,9 @@ AI image generation is a highly energy-demanding process. Generating just 1 AI i
 
 ## What memoAIzed does
 memoAIzed is an image generator that uses memoization (as the name implies) to remember all previously generated images and reuse them if they fit the prompt (an LLM compares the prompt to previously seen prompts). This allows us to skip the process of AI image generation for previously seen inputs, instead costing a simple database lookup and an LLM call. Essentially, we've lowered the cost of image generation down to the cost of text generation (for most use cases, assuming the user base has scaled), which only costs around 1% of the energy ([source](https://lifestyle.livemint.com/news/big-story/ai-carbon-footprint-openai-chatgpt-water-google-microsoft-111697802189371.html)). You can imagine how the application would improve dramatically if the user base scaled and the database of previously seen images grew larger and larger. As a bonus, the latency for memoized images is 5 times faster on average than for non-memoized images!
-\
 
-*Fun fact: memoAIzed was in fact inspired by how memoization is used in Dynamic Programming problems to drastically improve efficiency. We wanted to apply the same principles to improve the efficiency of GenAI, and it so this project was born!*
+
+*Fun fact: memoAIzed was inspired by how memoization is used in Dynamic Programming problems to drastically improve efficiency. We wanted to apply the same principles to improve the efficiency of GenAI, and so this project was born!*
 
 ## Tech Stack
 We used Amazon Titan Image Generator G1 v2 for image generation, Llama 3.1 70B Instruct as the LLM, Amazon DyanoDB to map memoized prompts to images, and AWS S3 to store the image files. We then threw it all together using Streamlit for lightning-fast UI development (it was only a 9-hour hackathon)!
