@@ -25,7 +25,7 @@ memoAIzed is an image generator that uses memoization (as the name implies) to r
 *Fun fact: memoAIzed was inspired by how memoization is used in Dynamic Programming problems to drastically improve efficiency. We wanted to apply the same principles to improve the efficiency of GenAI, and so this project was born!*
 
 ## Tech Stack
-We used Amazon Titan Image Generator G1 v2 for image generation, Llama 3.1 70B Instruct as the LLM, Amazon DynamoDB to map memoized prompts to images, and AWS S3 to store the image files. We then threw it all together using Streamlit for lightning-fast UI development (this was especially helpful, as this project was made for a hackathon that only lasted 9-hours)!
+We used Amazon Titan Image Generator G1 v2 for image generation, Llama 3.1 70B Instruct as the LLM, Amazon DynamoDB to map memoized prompts to images, and AWS S3 to store the image files. We then threw it all together using Streamlit for lightning-fast UI development (this was especially helpful, as this project was made for a hackathon that only lasted 9-hours)! The app is hosted on an EC2 instance and is available through [this link](http://ec2-34-219-51-116.us-west-2.compute.amazonaws.com:8502/) until the hackathon organizers revoke our AWS access...
 
 
 ![Architecture Diagram](https://github.com/user-attachments/assets/2d4b9364-d48f-4af7-b8ac-b3f0c54b403c)
