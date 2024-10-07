@@ -212,8 +212,8 @@ with col2:
         st.markdown(
                 """
             <style>
-            .stButton {
-                width: 450px;
+            div.stButton > button {
+                width: 150px;
             }
             </style>
             """,
