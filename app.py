@@ -220,18 +220,6 @@ with col2:
                 unsafe_allow_html=True,
             )
 
-        # Textbox width
-        st.markdown(
-                """
-            <style>
-            .stTextInput {
-            width: fill;
-            }
-            </style>
-            """,
-                unsafe_allow_html=True,
-            )
-
         with col2_1:
             prompt = st.text_input(label="",placeholder="Enter your text prompt")
 
