@@ -192,11 +192,46 @@ st.markdown(hide_img_fs, unsafe_allow_html=True)
 st.markdown(hide_img_fs, unsafe_allow_html=True)
 
 with col2:  
-    st.image("./media/logo.svg", width=557)
+    st.image("./media/logodark.svg")#557)
 
 with col2:
     with st.container():
         col2_1, col2_2 = st.columns([3, 1])
+
+        # Centering
+        st.markdown("""
+                <style>
+                div {
+                    text-align:center;
+                    align-items: center;
+                    justify-content: center;
+                }
+                </style>""", unsafe_allow_html=True)
+
+        # Button Width
+        st.markdown(
+                """
+            <style>
+            .stButton {
+                width: 450px;
+            }
+            </style>
+            """,
+                unsafe_allow_html=True,
+            )
+
+        # Textbox width
+        st.markdown(
+                """
+            <style>
+            .stTextInput {
+            width: fill;
+            }
+            </style>
+            """,
+                unsafe_allow_html=True,
+            )
+
         with col2_1:
             prompt = st.text_input(label="",placeholder="Enter your text prompt")
 
@@ -208,15 +243,7 @@ with col2:
 
 if (gen_button_clicked & (prompt != "")):
             with col2:
-                # Centering
-                st.markdown("""
-                <style>
-                div {
-                    text-align:center;
-                    align-items: center;
-                    justify-content: center;
-                }
-                </style>""", unsafe_allow_html=True)
+               
 
                 with st.spinner("Generating image..."):
                     start_time = time.time()
