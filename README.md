@@ -38,7 +38,7 @@ We used Amazon Titan Image Generator G1 v2 for image generation, Llama 3.1 70B I
 ## How to run it
 1. Clone the repo into a local folder.
 2. Assuming Python 3 has been downloaded, run "python -m venv venv" to create the virtual environment
-3. Run "\venv\Scripts\Activate" to activate the virtual environment.
+3. Run ".\venv\Scripts\Activate" to activate the virtual environment.
 4. Run "pip install -r requirements.txt" to install all required packages.
 5. Run "python app.py" to compile the script, then "streamlit run app.py" to run the front-end
 
